@@ -60,3 +60,18 @@ compounds.  When force fields are applied to compounds, a parameterized
 added together, which is what we do with the individual ParmEd structure.
 
 For more information on these steps, check out the mBuild and foyer documentation.
+
+### Tutorials
+
+You can learn the basics of MoSDeF by going through the
+[tutorials](https://github.com/mosdef-hub/mosdef_tutorials).  In particular it would
+be usefull to go through the `overview.ipynb` notebook.
+
+### MoSDeF Workflows
+
+To get a better idea of how MoSDeF is used for research, take a look at
+[mosdef-workflows](https://github.com/mosdef-hub/mosdef-workflows).  This is a
+collection of notebooks with sample workflows.  In particular, take a look at
+`graphene-pore`, which goes through building and simulating a graphene slit pore
+system with water, and calculating a number density profile of water within the slit
+pores.
