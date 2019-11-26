@@ -27,7 +27,7 @@ studied the structural and thermodynamic properties from the screening dataset
 Stated earlier, Graphene was heavily researched in the second funding cycle of FIRST.
 Most recently, a study of oxidized graphene was published by [Yu
 Zhang](https://pubs.acs.org/doi/abs/10.1021/acs.jpcc.9b01617).  Yu also studied ionic liquid and organic solvent mixtures studied in a variety of graphene materials recently
-[published]([https://pubs.acs.org/doi/abs/10.1021/acsami.9b09939)
+[published](https://pubs.acs.org/doi/abs/10.1021/acsami.9b09939)
 in 2019 as well. (Add some other papers by Matt)
 
 ## 
