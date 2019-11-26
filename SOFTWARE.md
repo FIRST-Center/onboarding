@@ -3,6 +3,57 @@
 Besides MoSDeF, there are several main software packages that we use in our research.
 These packages are all open-source, so I recommend checking out the source codes on GitHub.
 
+
+## ParmEd
+
+[ParmEd](https://parmed.github.io/ParmEd/html/index.html) is a Python package to setup, modify, and translate systems for molecular
+simulations.  In FIRST, we typically don't use ParmEd on its own.  However, ParmEd is
+used in many MoSDeF workflows which is why I think it's worth mentioning.
+
+The core data structure in ParmEd is a `Structure`.  A `Structure` is similar to an
+mBuild `Compound` as it contains a list of atoms, residues, box information,
+and coordinates.  A `Structure` also contains lists of bonds, angles, and dihedrals.
+When we apply forcefields to mBuild compounds with foyer, a parameterized `Structure` is returned.  
+
+We also take advantage of ParmEd since the package has a variety of writers for the
+following file formats:
+- Amber prmtop
+- CHARM PSF, coordinate, and restart files
+- Gromacs topology and gro files
+- PDB files
+
+Overall I would recommend learning the basics of the ParmEd API as it will certainly
+be useful setting up various molecular systems.  
+
+## Signac
+
+The [signac framework](https://signac.io) is a workflow management package developed by the Glotzer Group at
+the University of Michigan.  We have been using signac since 2017, and was a huge component of our screening
+study of ionic liquid and organic solvent mixtures. Oftentimes as grad students, we are not organized 
+with our file
+management and we do things like inconsistently name files, move files around, etc. This is exactly what
+signac can prevent.  Signac is designed to help the user store, generate, and analyze data for computational
+studies.  In signac, a similarly structured data set is called a `project` and the
+elements of the project's data space are called `jobs`.  In our screening project for example, our project
+was called `il_solvent` because we were studying various solvated ionic liquids, and each job had a unique
+solvent, and ionic liquid concentration.
+
+The signac framework also includes a tool called
+[signac-flow](https://signac-flow.readthedocs.io/en/v0.6.2/) which is useful for executing the various data
+space operations in your project.  Signac-flow also makes it easy to submit operations to computer clusters,
+which many of us are using to submit jobs on Rahman, NERSC, and previously Titan.  In signac-flow, the
+operations of your project go into a `project.py` folder.  Some examples include initialization, sampling,
+and calculating the mean squared displacement.  Some examples can be viewed
+[here](https://github.com/csadorf/signac-examples/tree/master/projects).  To execute an operation in
+`project.py` the basic syntax is like this: `python project.py [operation]`.  One of the more useful command
+in signac-flow is `python project.py status`, which gives you an overview of the operations you've run, and
+the operations you have left to run.  This is one main benefit of using signac, as you always have an idea
+on the progress of your project.  To submit a job to the cluster, the command is `python project.py submit
+-o operation`.  
+
+This is just a brief overview of signac.  I pretty much use it for all of my projects now, and I recommend
+learning it if you're a new grad student.
+
 ## MDTraj
 
 [MDTraj](http://mdtraj.org/1.9.3/) is an analysis library for molecular dynamics trajectories.
@@ -41,34 +92,3 @@ with the following command `MDAnalysis.Universe(topology, trajectory)`.
 One great feature of MDAnalysis is that they support a large variety of topology file formats which can be
 viewed [here](https://www.mdanalysis.org/docs/documentation_pages/coordinates/init.html#id2).  The few times
 I've used MDAnalysis was because I was attempting to load in a topology that wasn't supported by MDTraj.
-
-## ParmEd
-
-## Signac
-
-The [signac framework](https://signac.io) is a workflow management package developed by the Glotzer Group at
-the University of Michigan.  We have been using signac since 2017, and was a huge component of our screening
-study of ionic liquid and organic solvent mixtures. Oftentimes as grad students, we are not organized 
-with our file
-management and we do things like inconsistently name files, move files around, etc. This is exactly what
-signac can prevent.  Signac is designed to help the user store, generate, and analyze data for computational
-studies.  In signac, a similarly structured data set is called a `project` and the
-elements of the project's data space are called `jobs`.  In our screening project for example, our project
-was called `il_solvent` because we were studying various solvated ionic liquids, and each job had a unique
-solvent, and ionic liquid concentration.
-
-The signac framework also includes a tool called
-[signac-flow](https://signac-flow.readthedocs.io/en/v0.6.2/) which is useful for executing the various data
-space operations in your project.  Signac-flow also makes it easy to submit operations to computer clusters,
-which many of us are using to submit jobs on Rahman, NERSC, and previously Titan.  In signac-flow, the
-operations of your project go into a `project.py` folder.  Some examples include initialization, sampling,
-and calculating the mean squared displacement.  Some examples can be viewed
-[here](https://github.com/csadorf/signac-examples/tree/master/projects).  To execute an operation in
-`project.py` the basic syntax is like this: `python project.py [operation]`.  One of the more useful command
-in signac-flow is `python project.py status`, which gives you an overview of the operations you've run, and
-the operations you have left to run.  This is one main benefit of using signac, as you always have an idea
-on the progress of your project.  To submit a job to the cluster, the command is `python project.py submit
--o operation`.  
-
-This is just a brief overview of signac.  I pretty much use it for all of my projects now, and I recommend
-learning it if you're a new grad student.
