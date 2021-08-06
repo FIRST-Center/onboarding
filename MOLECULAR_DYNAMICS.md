@@ -88,16 +88,13 @@ liquids with translational moves. It includes a number of extended ensembles (at
 GEMC) and a number of types of MC moves. One fairly unique feature it implements is configurational
 bias Monte Carlo, which is much better at generation configurations for (and subsequently relaxing)
 systems of long-chain molecules than blind packing (i.e. PACKMOL/`gmx solvate`) and MD simulations.
-A postdoc (Ryan DeFever) is working on integrating it into MoSDeF and (as of writing this, in
-December 2019) this is complete in principle but needs some more stress-testing and development to
-work well. However, it can currently be used outside of MoSDeF, although you need to do some manual
-edited of input files, as is typical of most other engines.
+Ryan DeFever developed a Python interface for Cassandra, called [MoSDeF Cassandra](https://github.com/MaginnGroup/mosdef_cassandra) that offers complete integration with
+MoSDeF.
+As of 2021, this is the preferred method for running Cassandra simulations.
 
 ### Quirks of Cassandra
 - No GPU support
 - Fairly young engine and limited user base (positive spin: you can drive feature development!)
-- Limited "glue," as in it only supports a few input/output formats (although this may change with
-  MoSDeF)
 
 ## HOOMD-blue
 [HOOMD-blue](http://glotzerlab.engin.umich.edu/hoomd-blue/) is a particule simulation toolkit that
